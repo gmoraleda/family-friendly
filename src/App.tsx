@@ -1,11 +1,16 @@
+import MapComponent from "./MapComponent";
 
 function App() {
-
   return (
-    <>
-    <div>Hello World!</div>
-    </>
-  )
+    <div className="flex flex-col h-screen">
+      <Header />
+      <MapComponent />
+    </div>
+  );
 }
 
-export default App
+function Header() {
+  return <h1 className="text-2xl font-bold">Family Friendly Map</h1>;
+}
+
+export default App;
