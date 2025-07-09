@@ -44,7 +44,7 @@ function Header() {
       <h1 className="mb-6 text-3xl md:text-5xl lg:text-6xl leading-tight text-white font-bold tracking-tight">
         Discover Family-Friendly Places Near You
       </h1>
-      <p className="mb-8 text-lg md:text-xl text-gray-400 font-medium">
+      <p className="mb-8 text-lg md:text-xl text-gray-400 font-medium hidden sm:block">
         Browse and filter thousands of verified family-friendly locations. From
         parks to restaurants, find the perfect spots for your family adventures.
       </p>

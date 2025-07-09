@@ -40,9 +40,9 @@ function Layout() {
         </ul>
       </nav>
 
-      <div className="flex-1 pt-14 overflow-hidden">
+      <main className="flex-1 pt-14 overflow-y-auto">
         <Outlet />
-      </div>
+      </main>
 
       <Footer />
     </div>
