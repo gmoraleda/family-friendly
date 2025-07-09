@@ -2,7 +2,7 @@ import { useState } from "react";
 import {
   APIProvider,
   Map as GoogleMap,
-  Marker,
+  AdvancedMarker as Marker,
 } from "@vis.gl/react-google-maps";
 import type { Tables } from "../database.types";
 import { PlaceDetail } from "./PlaceDetail";
