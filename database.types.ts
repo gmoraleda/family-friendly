@@ -16,21 +16,27 @@ export type Database = {
     Tables: {
       places: {
         Row: {
+          category: string | null
           created_at: string
+          description: string | null
           id: number
           latitude: number | null
           longitude: number | null
           name: string | null
         }
         Insert: {
+          category?: string | null
           created_at?: string
+          description?: string | null
           id?: number
           latitude?: number | null
           longitude?: number | null
           name?: string | null
         }
         Update: {
+          category?: string | null
           created_at?: string
+          description?: string | null
           id?: number
           latitude?: number | null
           longitude?: number | null

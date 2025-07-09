@@ -34,6 +34,7 @@ function Map({ places }: { places: Tables<"places">[] }) {
           };
 
           mapRef.current?.setCenter(pos);
+          mapRef.current?.setZoom(12);
         },
         () => {
           console.error("Error getting user location");
@@ -50,7 +51,7 @@ function Map({ places }: { places: Tables<"places">[] }) {
         <GoogleMap
           mapId={import.meta.env.VITE_GOOGLE_MAP_ID}
           defaultCenter={{ lat: 48.1351, lng: 11.582 }}
-          defaultZoom={8}
+          defaultZoom={10}
           fullscreenControl={false}
           mapTypeControl={false}
           zoomControl={true}
