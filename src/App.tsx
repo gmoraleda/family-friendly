@@ -25,15 +25,14 @@ function App() {
 
   return (
     <div className="relative min-h-screen">
-      {/* Map in the background */}
       <div className="absolute inset-0 z-0">
-        <Map />
+        <Map places={places} />
       </div>
 
-      {/* Content over the map */}
       <div className="relative z-10 flex flex-col min-h-screen pointer-events-none">
         <Header />
-        <div className="flex-1">{/* Optional content here */}</div>
+        <div className="flex-1">{/* Optional overlay content */}</div>
+
         <footer className="bg-gray-800 text-white text-center py-4">
           <p className="text-sm">
             {new Date().getFullYear()} Family Friendly. All rights reserved.
@@ -41,16 +40,6 @@ function App() {
         </footer>
       </div>
     </div>
-  );
-}
-
-function Places({ places }: { places: Tables<"places">[] }) {
-  return (
-    <ul>
-      {places.map((place) => (
-        <li key={place.name}>{place.name}</li>
-      ))}
-    </ul>
   );
 }
 
