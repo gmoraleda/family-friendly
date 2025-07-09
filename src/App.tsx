@@ -1,58 +1,95 @@
-import Map from "./Map";
-import { useEffect, useState } from "react";
-import { createClient } from "@supabase/supabase-js";
-import type { Database, Tables } from "../database.types";
-
-const supabase = createClient<Database>(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_ANON_KEY
-);
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./Home";
+import aboutPath from "./about.md";
+import contactPath from "./contact.md";
 
 function App() {
-  const [places, setPlaces] = useState<Tables<"places">[]>([]);
-  useEffect(() => {
-    getPlaces();
-  }, []);
-
-  async function getPlaces() {
-    const { data, error } = await supabase.from("places").select();
-    if (error) {
-      console.error("Error fetching places:", error);
-    } else {
-      setPlaces(data || []);
-    }
-  }
-
   return (
-    <div className="relative min-h-screen">
-      <div className="absolute inset-0 z-0">
-        <Map places={places} />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="*" element={<NoPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+import { Outlet, Link } from "react-router-dom";
+import Footer from "./Footer";
+import ReactMarkdown from "react-markdown";
+import { useState } from "react";
+
+function Layout() {
+  return (
+    <div className="flex flex-col h-screen">
+      <nav className="fixed top-0 left-0 right-0 bg-gray-800 text-white p-4 z-50">
+        <ul className="flex space-x-4">
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+          <li>
+            <Link to="/contact">Contact</Link>
+          </li>
+        </ul>
+      </nav>
+
+      <div className="flex-1 pt-14 overflow-hidden">
+        <Outlet />
       </div>
 
-      <div className="relative z-10 flex flex-col min-h-screen pointer-events-none">
-        <Header />
-        <div className="flex-1">{/* Optional overlay content */}</div>
-
-        <footer className="bg-gray-800 text-white text-center py-4">
-          <p className="text-sm">
-            {new Date().getFullYear()} Family Friendly. All rights reserved.
-          </p>
-        </footer>
-      </div>
+      <Footer />
     </div>
   );
 }
 
-function Header() {
+function About() {
+  const [text, setText] = useState("");
+
+  fetch(aboutPath)
+    .then((response) => response.text())
+    .then((text) => {
+      setText(text);
+    })
+    .catch((error) => {
+      console.error("Error fetching about content:", error);
+    });
   return (
-    <div className="bg-gray-900/85 text-left p-8 md:p-16 lg:p-16">
-      <h1 className="mb-6 text-3xl md:text-5xl lg:text-6xl leading-tight text-white font-bold tracking-tight">
-        Discover Family-Friendly Places Near You
-      </h1>
-      <p className="mb-8 text-lg md:text-xl text-gray-400 font-medium">
-        Browse and filter thousands of verified family-friendly locations. From
-        parks to restaurants, find the perfect spots for your family adventures.
-      </p>
+    <div className="prose p-8">
+      <ReactMarkdown>{text}</ReactMarkdown>
+    </div>
+  );
+}
+
+function Contact() {
+  const [text, setText] = useState("");
+
+  fetch(contactPath)
+    .then((response) => response.text())
+    .then((text) => {
+      setText(text);
+    })
+    .catch((error) => {
+      console.error("Error fetching contact content:", error);
+    });
+  return (
+    <div className="prose p-8">
+      <ReactMarkdown>{text}</ReactMarkdown>
+    </div>
+  );
+}
+
+function NoPage() {
+  return (
+    <div>
+      <h2>404 Not Found</h2>
+      <p>Sorry, this page does not exist.</p>
     </div>
   );
 }
