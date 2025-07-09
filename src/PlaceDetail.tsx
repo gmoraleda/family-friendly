@@ -1,4 +1,3 @@
-import React from "react";
 import type { Tables } from "../database.types";
 
 export function PlaceDetail({
