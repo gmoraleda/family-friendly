@@ -24,10 +24,22 @@ function App() {
   }
 
   return (
-    <div className="flex flex-col h-screen">
-      <Places places={places} />
-      <Header />
-      <Map />
+    <div className="relative min-h-screen">
+      {/* Map in the background */}
+      <div className="absolute inset-0 z-0">
+        <Map />
+      </div>
+
+      {/* Content over the map */}
+      <div className="relative z-10 flex flex-col min-h-screen pointer-events-none">
+        <Header />
+        <div className="flex-1">{/* Optional content here */}</div>
+        <footer className="bg-gray-800 text-white text-center py-4">
+          <p className="text-sm">
+            {new Date().getFullYear()} Family Friendly. All rights reserved.
+          </p>
+        </footer>
+      </div>
     </div>
   );
 }
@@ -43,7 +55,17 @@ function Places({ places }: { places: Tables<"places">[] }) {
 }
 
 function Header() {
-  return <h1 className="text-2xl font-bold">Family Friendly Map</h1>;
+  return (
+    <div className="bg-gray-900 text-left p-8 md:p-16 lg:p-16 opacity-80">
+      <h1 className="mb-6 text-3xl md:text-5xl lg:text-6xl leading-tight text-white font-bold tracking-tight">
+        Discover Family-Friendly Places Near You
+      </h1>
+      <p className="mb-8 text-lg md:text-xl text-gray-400 font-medium">
+        Browse and filter thousands of verified family-friendly locations. From
+        parks to restaurants, find the perfect spots for your family adventures.
+      </p>
+    </div>
+  );
 }
 
 export default App;
