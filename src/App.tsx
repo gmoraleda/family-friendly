@@ -45,7 +45,7 @@ function App() {
 
 function Header() {
   return (
-    <div className="bg-gray-900 text-left p-8 md:p-16 lg:p-16 opacity-80">
+    <div className="bg-gray-900/85 text-left p-8 md:p-16 lg:p-16">
       <h1 className="mb-6 text-3xl md:text-5xl lg:text-6xl leading-tight text-white font-bold tracking-tight">
         Discover Family-Friendly Places Near You
       </h1>
