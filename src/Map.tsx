@@ -1,10 +1,10 @@
-import { APIProvider, Map } from "@vis.gl/react-google-maps";
+import { APIProvider, Map as GoogleMap } from "@vis.gl/react-google-maps";
 
-function MapComponent() {
+function Map() {
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
   return (
     <APIProvider apiKey={apiKey}>
-      <Map
+      <GoogleMap
         style={{ width: "100vw", height: "100vh" }}
         defaultCenter={{ lat: 22.54992, lng: 0 }}
         defaultZoom={3}
@@ -15,4 +15,4 @@ function MapComponent() {
   );
 }
 
-export default MapComponent;
+export default Map;
