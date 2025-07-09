@@ -29,11 +29,16 @@ function Map({ places }: { places: Tables<"places">[] }) {
               lng: place.longitude ?? 0,
             }}
             title={place.name}
+            onClick={() => onClick(place)}
           />
         ))}
       </GoogleMap>
     </APIProvider>
   );
+}
+
+function onClick(place: Tables<"places">) {
+  console.log("Marker clicked:", place);
 }
 
 export default Map;
