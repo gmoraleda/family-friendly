@@ -6,6 +6,7 @@ import {
 } from "@vis.gl/react-google-maps";
 import type { Tables } from "../database.types";
 import { PlaceDetail } from "./PlaceDetail";
+import mapStyles from "./mapStyles";
 
 function Map({ places }: { places: Tables<"places">[] }) {
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
@@ -27,15 +28,21 @@ function Map({ places }: { places: Tables<"places">[] }) {
     setSelectedPlace(null);
   }
 
+  const defaultCenter = {
+    lat: 48.1351,
+    lng: 11.582,
+  };
+
   return (
     <>
       <APIProvider apiKey={apiKey}>
         <GoogleMap
           style={{ width: "100vw", height: "100vh" }}
-          defaultCenter={{ lat: 22.54992, lng: 0 }}
-          defaultZoom={3}
+          defaultCenter={defaultCenter}
+          defaultZoom={8}
           gestureHandling={"greedy"}
           disableDefaultUI={true}
+          styles={mapStyles}
         >
           {places.map((place) => (
             <Marker
