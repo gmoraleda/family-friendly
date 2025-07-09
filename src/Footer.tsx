@@ -1,7 +1,7 @@
 function Footer() {
   return (
     <footer className="bg-gray-800 text-white z-10 p-4">
-      <div className="flex justify-between text-sm">
+      <div className="flex justify-between">
         <p>{new Date().getFullYear()} Family Friendly. All rights reserved.</p>
         <a
           href="http://github.com/gmoraleda/family-friendly"
