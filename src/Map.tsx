@@ -37,6 +37,7 @@ function Map({ places }: { places: Tables<"places">[] }) {
     <>
       <APIProvider apiKey={apiKey}>
         <GoogleMap
+          id="map"
           style={{ width: "100vw", height: "100vh" }}
           defaultCenter={defaultCenter}
           defaultZoom={8}
