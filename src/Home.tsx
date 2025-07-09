@@ -25,14 +25,12 @@ function Home() {
 
   return (
     <div className="relative h-full w-full">
-      {/* Floating header on top of map */}
       <div className="absolute top-0 left-0 right-0 z-10 pointer-events-none">
         <div className="pointer-events-auto">
           <Header />
         </div>
       </div>
 
-      {/* Map takes full container height */}
       <div className="absolute inset-0 z-0">
         <Map places={places} />
       </div>
