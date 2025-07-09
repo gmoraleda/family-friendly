@@ -37,7 +37,7 @@ function Map({ places }: { places: Tables<"places">[] }) {
     <>
       <APIProvider apiKey={apiKey}>
         <GoogleMap
-          id="MAIN_MAP"
+          id={import.meta.env.VITE_GOOGLE_MAP_ID}
           style={{ width: "100vw", height: "100vh" }}
           defaultCenter={defaultCenter}
           defaultZoom={8}
