@@ -6,7 +6,6 @@ import {
 } from "@vis.gl/react-google-maps";
 import type { Tables } from "../database.types";
 import { PlaceDetail } from "./PlaceDetail";
-import mapStyles from "./mapStyles";
 
 function Map({ places }: { places: Tables<"places">[] }) {
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
@@ -42,8 +41,6 @@ function Map({ places }: { places: Tables<"places">[] }) {
           defaultCenter={defaultCenter}
           defaultZoom={8}
           gestureHandling={"greedy"}
-          disableDefaultUI={true}
-          styles={mapStyles}
         >
           {places.map((place) => (
             <Marker
