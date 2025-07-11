@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Home";
-import aboutPath from "./about.md";
-import contactPath from "./contact.md";
+import aboutPath from "../resources/about.md";
+import contactPath from "../resources/contact.md";
 
 function App() {
   return (
