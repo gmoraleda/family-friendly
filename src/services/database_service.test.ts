@@ -30,6 +30,7 @@ describe("Database Service", () => {
         category: "restaurant",
         latitude: 40.7128,
         longitude: -74.006,
+        google_place_id: "test_place_id_1",
         created_at: "2023-01-01T00:00:00Z",
       };
 
@@ -58,6 +59,7 @@ describe("Database Service", () => {
         category: "restaurant",
         latitude: 40.7128,
         longitude: -74.006,
+        google_place_id: "test_place_id_1",
         created_at: "2023-01-01T00:00:00Z",
       };
 
@@ -87,6 +89,7 @@ describe("Database Service", () => {
           category: "restaurant",
           latitude: 40.7128,
           longitude: -74.006,
+          google_place_id: "test_place_id_1",
           created_at: "2023-01-01T00:00:00Z",
         },
         {
@@ -96,6 +99,7 @@ describe("Database Service", () => {
           category: "park",
           latitude: 40.7589,
           longitude: -73.9851,
+          google_place_id: "test_place_id_2",
           created_at: "2023-01-02T00:00:00Z",
         },
       ];
@@ -153,6 +157,7 @@ describe("Database Service", () => {
         category: "restaurant",
         latitude: 40.7128,
         longitude: -74.006,
+        google_place_id: "test_place_id_1",
         created_at: "2023-01-01T00:00:00Z",
       };
 

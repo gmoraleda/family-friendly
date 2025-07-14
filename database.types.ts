@@ -19,6 +19,7 @@ export type Database = {
           category: string | null
           created_at: string
           description: string | null
+          google_place_id: string | null
           id: number
           latitude: number | null
           longitude: number | null
@@ -28,6 +29,7 @@ export type Database = {
           category?: string | null
           created_at?: string
           description?: string | null
+          google_place_id?: string | null
           id?: number
           latitude?: number | null
           longitude?: number | null
@@ -37,10 +39,32 @@ export type Database = {
           category?: string | null
           created_at?: string
           description?: string | null
+          google_place_id?: string | null
           id?: number
           latitude?: number | null
           longitude?: number | null
           name?: string | null
+        }
+        Relationships: []
+      }
+      suggestions: {
+        Row: {
+          comment: string
+          created_at: string
+          google_place_id: string
+          id: number
+        }
+        Insert: {
+          comment: string
+          created_at?: string
+          google_place_id: string
+          id?: number
+        }
+        Update: {
+          comment?: string
+          created_at?: string
+          google_place_id?: string
+          id?: number
         }
         Relationships: []
       }

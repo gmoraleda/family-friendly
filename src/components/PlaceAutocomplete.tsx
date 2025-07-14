@@ -14,25 +14,48 @@ function PlaceAutocomplete({ onPlaceSelect }: PlaceAutocompleteProps) {
 
   useEffect(() => {
     if (!placesLib || !inputRef.current) return;
+
     const options = {
       fields: ["geometry", "name", "formatted_address", "place_id"],
     };
-    setPlaceAutocomplete(new placesLib.Autocomplete(inputRef.current, options));
+
+    const autocomplete = new placesLib.Autocomplete(inputRef.current, options);
+    setPlaceAutocomplete(autocomplete);
+
+    // Clean up listener on unmount
+    return () => {
+      if (autocomplete) {
+        google.maps.event.clearInstanceListeners(autocomplete);
+      }
+    };
   }, [placesLib]);
 
   useEffect(() => {
     if (!placeAutocomplete) return;
-    placeAutocomplete.addListener("place_changed", () => {
+
+    const listener = placeAutocomplete.addListener("place_changed", () => {
       const place = placeAutocomplete.getPlace();
-      setInputValue(place.name || "");
-      onPlaceSelect(place);
+      if (place && place.geometry) {
+        setInputValue(place.name || place.formatted_address || "");
+        onPlaceSelect(place);
+      }
     });
+
+    return () => {
+      if (listener) {
+        google.maps.event.removeListener(listener);
+      }
+    };
   }, [placeAutocomplete, onPlaceSelect]);
 
   const handleClear = () => {
     setInputValue("");
     onPlaceSelect(null);
-    if (inputRef.current) inputRef.current.value = "";
+    if (inputRef.current) {
+      inputRef.current.value = "";
+      // Trigger input event to ensure Google Places Autocomplete is aware
+      inputRef.current.dispatchEvent(new Event("input", { bubbles: true }));
+    }
   };
 
   return (

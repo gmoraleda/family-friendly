@@ -1,6 +1,6 @@
 // This function handles the database operations for the places
 import { createClient } from "@supabase/supabase-js";
-import type { Tables } from "../../database.types";
+import type { Tables, TablesInsert } from "../../database.types";
 
 const supabase = createClient(
   import.meta.env.VITE_SUPABASE_URL,
@@ -39,6 +39,21 @@ export async function getPlaceById(id: string) {
 
   if (error) {
     console.error("Error fetching place by ID:", error);
+    throw error;
+  }
+
+  return data;
+}
+
+export async function createSuggestion(
+  suggestion: TablesInsert<"suggestions">
+) {
+  const { data, error } = await supabase
+    .from("suggestions")
+    .insert([suggestion]);
+
+  if (error) {
+    console.error("Error creating suggestion:", error);
     throw error;
   }
 

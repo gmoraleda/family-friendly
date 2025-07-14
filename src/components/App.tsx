@@ -12,6 +12,8 @@ function App() {
           <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />
           <Route path="*" element={<NoPage />} />
+          <Route path="places" element={<Places />} />
+          <Route path="places/new" element={<NewPlace />} />
         </Route>
       </Routes>
     </BrowserRouter>
@@ -22,6 +24,8 @@ import { Outlet, Link } from "react-router-dom";
 import Footer from "./Footer";
 import ReactMarkdown from "react-markdown";
 import { useState } from "react";
+import NewPlace from "./NewPlace";
+import Places from "./Places";
 
 function Layout() {
   return (
@@ -30,6 +34,9 @@ function Layout() {
         <ul className="flex space-x-4">
           <li>
             <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/places">Places</Link>
           </li>
           <li>
             <Link to="/about">About</Link>
