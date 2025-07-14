@@ -6,7 +6,9 @@ import { useNavigate } from "react-router-dom";
 import type { Tables } from "../../database.types";
 function Home() {
   const navigate = useNavigate();
-  const [selectedPlace, setSelectedPlace] = useState<Tables<"places"> | null>(null);
+  const [selectedPlace, setSelectedPlace] = useState<Tables<"places"> | null>(
+    null
+  );
 
   const handlePlaceSelect = (place: Tables<"places">) => {
     setSelectedPlace(place);
