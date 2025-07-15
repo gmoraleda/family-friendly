@@ -11,5 +11,3 @@ This is a personal project built to **learn and experiment** with modern web dev
 - 🌐 **Vercel** for modern deployment
 
 The idea is to build a web app where users can discover and share family-friendly places — from restaurants to hikes and museums. It's not just a useful tool, but also a way to deepen my understanding of full-stack development.
-
-Thanks for stopping by!
