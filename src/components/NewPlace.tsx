@@ -47,7 +47,7 @@ export function NewPlace() {
           </Marker>
 
           {/* Search control positioned at bottom center */}
-          <MapControl position={ControlPosition.BOTTOM_CENTER}>
+          <MapControl position={ControlPosition.TOP_CENTER}>
             <SearchControl onPlaceSelect={setPlace} />
           </MapControl>
 

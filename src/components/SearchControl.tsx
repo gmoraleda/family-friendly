@@ -9,7 +9,7 @@ interface SearchControlProps {
 
 export function SearchControl({ onPlaceSelect }: SearchControlProps) {
   return (
-    <div className="py-16 flex max-w-full w-screen justify-center">
+    <div className="py-8 flex max-w-full w-screen justify-center">
       <div className="autocomplete-control bg-white p-4 shadow text-base rounded-full w-full max-w-md">
         <PlaceAutocomplete onPlaceSelect={onPlaceSelect} />
       </div>

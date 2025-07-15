@@ -22,8 +22,8 @@ export function SuggestionModal({
   onClearError,
 }: SuggestionModalProps) {
   return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 p-8">
-      <div className="bg-white rounded-xl p-6 max-w-md w-full shadow-lg">
+    <div className="fixed inset-0 z-[9999] flex items-start justify-start bg-black/30 p-8">
+      <div className="bg-white rounded-xl p-6 max-w-md w-full shadow-lg mt-16">
         <h2 className="text-xl font-semibold mb-4">{place.name}</h2>
         <p className="text-sm text-gray-700 mb-4">
           {place.formatted_address || "No address available."}
